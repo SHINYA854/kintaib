@@ -13,5 +13,8 @@ User.create!(name: "Sample User",
   User.create!(name: name,
                email: email,
                password: password,
-               password_confirmation: password)
+               password_confirmation: password,
+               department: "未所属",
+               basic_time: "8:00",
+               work_time: "7:00")
 end               
