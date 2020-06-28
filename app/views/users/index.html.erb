@@ -6,22 +6,21 @@
 <% end %>  
 
 <!-- 検索拡張機能　-->
-<div class="input-group">
-  <div class="col-md-8">
-    <%= form_with(model: @user, url: users_path, local: true, method: 'get') do |f| %>
-    <%= f.label :search, "ユーザー名検索", class: "label-search" %>
-    <%= f.search_field :search, placeholder: "キーワードを入力..", class: 'form-control' %>
-  </div>
-  <span class="input-group-btn">
-    <%= f.submit "検索", :name=> nil, class: "btn btn-primary btn-ms" %>
-  </span>
-  <% end %>
-</div>
+
+    <%= form_tag(users_path, :method => "get") do %>
+      <div style="text_align:left;"></div>
+        <%= label :search, "ユーザー名検索" %><BR>
+      <p style="text_align:right;"></p>    
+        <%= text_field_tag :search, params[:search], placeholder: "キーワードを入力.." %><%= submit_tag "検索", :name=> nil, class: "btn btn-sm btn-primary" %><BR>
+     
   
   
+    <% end %>
+
+ 
 
 <div class="col-md-10 col-md-offset-1">
-  <%= will_paginate %>
+  <%= will_paginate @users %>
   <table class="table table-condenced table-hover" id="table-users">
     <thead>
       <tr>
@@ -60,8 +59,6 @@
       </tr>
     <% end %> 
   </table>
-  <%= will_paginate %>
+  <%= will_paginate @users %>
 </div>
 
-<!--モーダルウィンドウ表示-->
-<div id="edit-basic-info" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
