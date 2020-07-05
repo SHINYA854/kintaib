@@ -17,5 +17,5 @@ class Attendance < ApplicationRecord
     if started_at.present? && finished_at.present?
       errors.add(:started_at, "より早い時間は無効です") if started_at > finished_at
     end
-  end  
+  end
 end
